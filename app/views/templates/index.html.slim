@@ -1,5 +1,12 @@
 .ng-cloak
   
+  // ng-view: index.htmlに読み込むHTMLテンプレートやコントローラーなどをURLによって切り替えることができる
+  // Rails Routingに'get '/dashboard' => 'templates#index''とあるため、
+  // "/dashboard"に対するアクセスはtemplatesコントローラーのindexアクションに割り振られ、
+  // "index.html"ファイル(このファイル)がレンダリングされるわけですが、
+  // $routeProviderプロバイダーによってAngularJSでのHTMLテンプレートやコントローラーなどを制御してng-view属性以下に展開することができる
+
+  // 括弧で括ることで`ng-view=""`のように書かなくてよくなる
   div(ng-view)  
   
     

@@ -1,18 +1,32 @@
+// ng-init:
+// モデルの初期値を決定する
+// 代入式や関数を値に取る
+// 基本的にモデルの初期化はコントローラーでやるものですが、テキストボックスの初期値など、その場限りの値を初期化するのに便利です
 .ng-cloak(ng-init="init()")
 
   div.panel.panel-default.dashboard-list
     div.panel-heading 
       h4 Your lists
+    // ng-show:
+    // 値が真のとき要素を表示する(CSSによる制御)
+    // ng-hide:
+    // 値が真のとき要素を表示しない(CSSによる制御)
+    // ng-if:
+    // 値が真のとき要素を表示する(文章ツリーによる制御)
+    // ng-show(ng-hide)は変更の多い要素に、ng-ifは変更の少ない要素に使用するといいです
     ul.list-group(ng-show="lists == 0")
       li.list-group-item
         ' You haven't created any lists yet.      
     ul.list-group
       li.list-group-item(ng-repeat="list in lists")
+        // 削除
         button.btn.btn-danger.btn-xs.pull-right(type="button" ng-click="deleteList(list, $index)")
           span.glyphicon.glyphicon-ban-circle        
+        // 詳細
         a(href="/task_lists/{{list.id}}") 
           ' {{list.name}} ({{list.tasks.length}})      
 
+  // 作成
   form#new_list(ng-submit="createList(listName)")
     .input-group
       input#taskDescription.form-control.input-lg(type="text" autofocus="autofocus" placeholder="List name" maxlength="255" ng-model="listName" data-non-blank)

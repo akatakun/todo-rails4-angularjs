@@ -12,6 +12,7 @@ Todo::Application.routes.draw do
 
   root :to => "home#index"
 
+  # コントローラはパスごとに作らず統一されているな
   get '/dashboard' => 'templates#index'
   get '/task_lists/:id' => 'templates#index'
   get '/templates/:path.html' => 'templates#template', :constraints => { :path => /.+/  }
